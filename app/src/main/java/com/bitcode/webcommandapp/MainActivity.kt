@@ -237,13 +237,20 @@ class MainActivity : AppCompatActivity() {
                 val rawUrl = request?.url?.toString().orEmpty()
                 if (rawUrl.isBlank()) return false
 
+                Log.d("WebViewIntent", "shouldOverrideUrlLoading: $rawUrl")
+
                 if (rawUrl.startsWith("intent://", ignoreCase = true)) {
+                    Log.d("WebViewIntent", "Intent URL detectado")
                     val fallback = extractIntentFallbackUrl(rawUrl)
+                    Log.d("WebViewIntent", "Fallback URL extraída: $fallback")
                     if (fallback.isNotBlank()) {
-                        appendLog("Intent detectado, usando fallback web")
-                        mainHandler.post { webView.loadUrl(fallback) }
+                        appendLog("Intent detectado, usando fallback: $fallback")
+                        mainHandler.post { 
+                            Log.d("WebViewIntent", "Cargando fallback URL")
+                            webView.loadUrl(fallback) 
+                        }
                     } else {
-                        appendLog("Intent sin fallback bloqueado")
+                        appendLog("Intent sin fallback bloqueado: $rawUrl")
                     }
                     return true
                 }
@@ -415,16 +422,52 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun extractIntentFallbackUrl(intentUrl: String): String {
-        val marker = "S.browser_fallback_url="
-        val start = intentUrl.indexOf(marker)
-        if (start < 0) return ""
-        val from = start + marker.length
-        val end = intentUrl.indexOf(';', from).let { if (it < 0) intentUrl.length else it }
-        val encoded = intentUrl.substring(from, end)
-        return try {
-            URLDecoder.decode(encoded, "UTF-8")
-        } catch (_: Exception) {
-            ""
+        try {
+            Log.d("WebViewIntent", "Extrayendo fallback de: ${intentUrl.take(100)}...")
+            
+            // Buscar S.browser_fallback_url=
+            val marker = "S.browser_fallback_url="
+            var start = intentUrl.indexOf(marker)
+            if (start < 0) {
+                // Intentar patrón alternativo: browser_fallback_url=
+                start = intentUrl.indexOf("browser_fallback_url=")
+                if (start < 0) {
+                    Log.w("WebViewIntent", "No browser_fallback_url encontrado")
+                    return ""
+                }
+            }
+            
+            val from = start + (if (start == intentUrl.indexOf(marker)) marker.length else "browser_fallback_url=".length)
+            
+            // Encontrar el final: puede ser ; o #
+            var end = intentUrl.indexOf(';', from)
+            if (end < 0) {
+                end = intentUrl.indexOf('#', from)
+            }
+            if (end < 0) {
+                end = intentUrl.length
+            }
+            
+            val encoded = intentUrl.substring(from, end).trim()
+            Log.d("WebViewIntent", "Encoded fallback: $encoded")
+            
+            if (encoded.isBlank()) {
+                Log.w("WebViewIntent", "Encoded fallback está vacío")
+                return ""
+            }
+            
+            val decoded = try {
+                URLDecoder.decode(encoded, "UTF-8")
+            } catch (e: Exception) {
+                Log.e("WebViewIntent", "Error decodificando URL: ${e.message}")
+                encoded
+            }
+            
+            Log.d("WebViewIntent", "Decoded fallback: $decoded")
+            return decoded
+        } catch (e: Exception) {
+            Log.e("WebViewIntent", "Error extrayendo fallback: ${e.message}", e)
+            return ""
         }
     }
 
