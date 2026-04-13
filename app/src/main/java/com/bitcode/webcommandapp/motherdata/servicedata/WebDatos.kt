@@ -8,10 +8,40 @@ import java.net.URL
 import javax.xml.parsers.DocumentBuilderFactory
 import org.xml.sax.InputSource
 import java.io.StringReader
+import javax.net.ssl.HttpsURLConnection
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
+import java.security.cert.X509Certificate
 
 class WebDatos(
     var serviceUrl: String = DEFAULT_URL
 ) {
+
+    init {
+        // ⚠️ DESARROLLO/TESTING ONLY: Desactivar validación de certificados
+        // En producción, usar certificados válidos o configurar el trust store del dispositivo
+        disableSslCertificateVerification()
+    }
+
+    private fun disableSslCertificateVerification() {
+        try {
+            val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
+                override fun getAcceptedIssuers(): Array<X509Certificate>? = null
+                override fun checkClientTrusted(certs: Array<X509Certificate>, authType: String) {}
+                override fun checkServerTrusted(certs: Array<X509Certificate>, authType: String) {}
+            })
+
+            val sslContext = SSLContext.getInstance("SSL")
+            sslContext.init(null, trustAllCerts, java.security.SecureRandom())
+            HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.socketFactory)
+
+            // Desactivar verificación de hostname
+            HttpsURLConnection.setDefaultHostnameVerifier { _, _ -> true }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 
     fun SqlSOAP(sql: String, base: String, token: String): String {
         val endpoint = URL(serviceUrl)
