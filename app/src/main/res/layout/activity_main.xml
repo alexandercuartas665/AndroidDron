@@ -23,6 +23,11 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Log del Nav" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Configuracion" />
 
         <com.google.android.material.tabs.TabItem
@@ -90,21 +95,41 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/browserLogPage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ejecutor de JavaScript"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
 
             <EditText
                 android:id="@+id/scriptInput"
                 android:layout_width="match_parent"
-                android:layout_height="96dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="120dp"
                 android:gravity="top|start"
                 android:hint="document.title"
                 android:inputType="textMultiLine"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:layout_marginBottom="8dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -124,10 +149,18 @@
             </LinearLayout>
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Log del Navegador"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
                 android:id="@+id/tvLog"
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:layout_marginTop="6dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:background="#101010"
                 android:gravity="top|start"
                 android:padding="8dp"

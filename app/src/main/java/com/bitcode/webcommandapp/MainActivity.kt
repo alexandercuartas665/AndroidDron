@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var tabLayout: TabLayout
     private lateinit var browserPage: View
+    private lateinit var browserLogPage: View
     private lateinit var configPage: ScrollView
     private lateinit var recorderPage: ScrollView
     private lateinit var websocketPage: ScrollView
@@ -164,6 +165,7 @@ class MainActivity : AppCompatActivity() {
     private fun bindViews() {
         tabLayout = findViewById(R.id.tabLayout)
         browserPage = findViewById(R.id.browserPage)
+        browserLogPage = findViewById(R.id.browserLogPage)
         configPage = findViewById(R.id.configPage)
         recorderPage = findViewById(R.id.recorderPage)
         websocketPage = findViewById(R.id.websocketPage)
@@ -216,9 +218,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun showTab(position: Int) {
         browserPage.visibility = if (position == 0) View.VISIBLE else View.GONE
-        configPage.visibility = if (position == 1) View.VISIBLE else View.GONE
-        recorderPage.visibility = if (position == 2) View.VISIBLE else View.GONE
-        websocketPage.visibility = if (position == 3) View.VISIBLE else View.GONE
+        browserLogPage.visibility = if (position == 1) View.VISIBLE else View.GONE
+        configPage.visibility = if (position == 2) View.VISIBLE else View.GONE
+        recorderPage.visibility = if (position == 3) View.VISIBLE else View.GONE
+        websocketPage.visibility = if (position == 4) View.VISIBLE else View.GONE
     }
 
     @SuppressLint("SetJavaScriptEnabled")

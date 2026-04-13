@@ -3192,6 +3192,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id browserLogPage
 id browserPage
 id btnClearLog
 id btnConfigReload
