@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="db_base">AZURE_VPS</string>
+    <string name="client_token">KAhP3cqiXjJjj8Voa62XIF0E0F3Ldl</string>
+    <string name="soap_url">https://app.bitcode.com.co/datos/WebDatos.asmx</string>
+    <string name="sql_query">SELECT TOP 1 TOKEN, NOMBRE, SUCURSAL, CODIGO FROM [dbx.GENE].dbo.WEB_SCRAPING_CLI</string>
+    <string name="paso">1</string>
+    <string name="server_port">9090</string>
+    <string name="soap_token">6%9FioCcj&amp;HMPlq-K13*86evSXuUL-EiLoZFblCI</string>
+</map>
+
