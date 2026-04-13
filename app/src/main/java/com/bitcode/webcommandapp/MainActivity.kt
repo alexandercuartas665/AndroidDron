@@ -49,6 +49,8 @@ import java.util.concurrent.atomic.AtomicReference
 import android.net.http.SslError
 import java.net.URLDecoder
 import kotlin.math.max
+import android.content.Context
+import java.util.ArrayDeque
 
 class MainActivity : AppCompatActivity() {
 
@@ -93,6 +95,10 @@ class MainActivity : AppCompatActivity() {
     private val admDatos = AdmDatos()
     private val dbExecutor = Executors.newSingleThreadExecutor()
     private val recordedTouchSteps = mutableListOf<TouchStep>()
+    
+    // Extracted handler classes for refactored code
+    private lateinit var droneInstructionHandler: DroneInstructionHandler
+    private lateinit var signalRBridgeBuilder: SignalRBridgeBuilder
 
     @Volatile
     private var currentUrl: String = ""
@@ -137,6 +143,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         bindViews()
+        
+        // Initialize refactored handler classes
+        signalRBridgeBuilder = SignalRBridgeBuilder()
+        droneInstructionHandler = DroneInstructionHandler()
+        
         setupTabs()
         setupWebView()
         setupSignalRBridgeWebView()

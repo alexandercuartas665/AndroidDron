@@ -1,0 +1,34 @@
+com.bitcode.webcommandapp-pngs-0 C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\build\generated\res\pngs\release
+com.bitcode.webcommandapp-resValues-1 C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\build\generated\res\resValues\release
+com.bitcode.webcommandapp-packageReleaseResources-2 C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\build\intermediates\incremental\release\packageReleaseResources\merged.dir
+com.bitcode.webcommandapp-packageReleaseResources-3 C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\build\intermediates\incremental\release\packageReleaseResources\stripped.dir
+com.bitcode.webcommandapp-release-4 C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\build\intermediates\merged_res\release\mergeReleaseResources
+com.bitcode.webcommandapp-main-5 C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res
+com.bitcode.webcommandapp-release-6 C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\release\res
+com.bitcode.webcommandapp-core-runtime-2.2.0-7 C:\Users\acuartas\.gradle\caches\8.9\transforms\08ff96117aef32e15853f6538d6b8412\transformed\core-runtime-2.2.0\res
+com.bitcode.webcommandapp-transition-1.5.0-8 C:\Users\acuartas\.gradle\caches\8.9\transforms\115109d33d9c1f66947e25b098db0a1d\transformed\transition-1.5.0\res
+com.bitcode.webcommandapp-coordinatorlayout-1.1.0-9 C:\Users\acuartas\.gradle\caches\8.9\transforms\15f8580c0bdb54dcdb202773c436ba33\transformed\coordinatorlayout-1.1.0\res
+com.bitcode.webcommandapp-drawerlayout-1.1.1-10 C:\Users\acuartas\.gradle\caches\8.9\transforms\22595513795e2e2697ea10a601e732af\transformed\drawerlayout-1.1.1\res
+com.bitcode.webcommandapp-recyclerview-1.1.0-11 C:\Users\acuartas\.gradle\caches\8.9\transforms\2b57556045ce4ac21fb684365f97d1fc\transformed\recyclerview-1.1.0\res
+com.bitcode.webcommandapp-startup-runtime-1.1.1-12 C:\Users\acuartas\.gradle\caches\8.9\transforms\38a318140319c4a3b03a4dee02486f29\transformed\startup-runtime-1.1.1\res
+com.bitcode.webcommandapp-appcompat-1.7.0-13 C:\Users\acuartas\.gradle\caches\8.9\transforms\49c4f5d1a966de01c909e91be9c4e3f8\transformed\appcompat-1.7.0\res
+com.bitcode.webcommandapp-lifecycle-process-2.6.2-14 C:\Users\acuartas\.gradle\caches\8.9\transforms\59a597292dc13f726ce8796f0b11af49\transformed\lifecycle-process-2.6.2\res
+com.bitcode.webcommandapp-annotation-experimental-1.4.0-15 C:\Users\acuartas\.gradle\caches\8.9\transforms\5a09b54852c8eae99af6d81ad4a107a1\transformed\annotation-experimental-1.4.0\res
+com.bitcode.webcommandapp-emoji2-views-helper-1.3.0-16 C:\Users\acuartas\.gradle\caches\8.9\transforms\607088b6483eede47fbb4202ef3c5151\transformed\emoji2-views-helper-1.3.0\res
+com.bitcode.webcommandapp-constraintlayout-2.1.4-17 C:\Users\acuartas\.gradle\caches\8.9\transforms\72278b286c7ad8bc3802c307f7b84dcb\transformed\constraintlayout-2.1.4\res
+com.bitcode.webcommandapp-lifecycle-viewmodel-savedstate-2.6.2-18 C:\Users\acuartas\.gradle\caches\8.9\transforms\7284ebb8059ed14377de7bf098c91f16\transformed\lifecycle-viewmodel-savedstate-2.6.2\res
+com.bitcode.webcommandapp-cardview-1.0.0-19 C:\Users\acuartas\.gradle\caches\8.9\transforms\76ea0275432bd0f6f854d9dca1927d54\transformed\cardview-1.0.0\res
+com.bitcode.webcommandapp-profileinstaller-1.3.1-20 C:\Users\acuartas\.gradle\caches\8.9\transforms\7945a8cbdae38b3392cff27c3f0440d5\transformed\profileinstaller-1.3.1\res
+com.bitcode.webcommandapp-core-ktx-1.13.1-21 C:\Users\acuartas\.gradle\caches\8.9\transforms\79bf454479e2615ae996c2e53da25d1d\transformed\core-ktx-1.13.1\res
+com.bitcode.webcommandapp-savedstate-1.2.1-22 C:\Users\acuartas\.gradle\caches\8.9\transforms\7cbbc8859d084404ce836115df260f30\transformed\savedstate-1.2.1\res
+com.bitcode.webcommandapp-appcompat-resources-1.7.0-23 C:\Users\acuartas\.gradle\caches\8.9\transforms\86dce3630522c3f882874a9ca5626f32\transformed\appcompat-resources-1.7.0\res
+com.bitcode.webcommandapp-emoji2-1.3.0-24 C:\Users\acuartas\.gradle\caches\8.9\transforms\888c0ae0af93e1c5e31b1db21358a3a9\transformed\emoji2-1.3.0\res
+com.bitcode.webcommandapp-core-1.13.1-25 C:\Users\acuartas\.gradle\caches\8.9\transforms\9155d5eaa60b313c76699f88d3330471\transformed\core-1.13.1\res
+com.bitcode.webcommandapp-material-1.12.0-26 C:\Users\acuartas\.gradle\caches\8.9\transforms\9520db16aed0ad6b455c0a4b9967ea85\transformed\material-1.12.0\res
+com.bitcode.webcommandapp-lifecycle-runtime-2.6.2-27 C:\Users\acuartas\.gradle\caches\8.9\transforms\972cf44c4893582cfbbebf00380bf30f\transformed\lifecycle-runtime-2.6.2\res
+com.bitcode.webcommandapp-lifecycle-livedata-core-2.6.2-28 C:\Users\acuartas\.gradle\caches\8.9\transforms\a445644ee6503f601076f5eee68907f1\transformed\lifecycle-livedata-core-2.6.2\res
+com.bitcode.webcommandapp-lifecycle-viewmodel-2.6.2-29 C:\Users\acuartas\.gradle\caches\8.9\transforms\e4a0c22fcfc917d6c202f67ca34aa3b6\transformed\lifecycle-viewmodel-2.6.2\res
+com.bitcode.webcommandapp-fragment-1.5.4-30 C:\Users\acuartas\.gradle\caches\8.9\transforms\f16afae475d64b3334d26dd9195538ad\transformed\fragment-1.5.4\res
+com.bitcode.webcommandapp-lifecycle-livedata-2.6.2-31 C:\Users\acuartas\.gradle\caches\8.9\transforms\f46d2c1cebf20911e26c9f39f81ef9fb\transformed\lifecycle-livedata-2.6.2\res
+com.bitcode.webcommandapp-viewpager2-1.0.0-32 C:\Users\acuartas\.gradle\caches\8.9\transforms\f9d8340a6d28ddb089242ae0e5d199db\transformed\viewpager2-1.0.0\res
+com.bitcode.webcommandapp-activity-1.8.0-33 C:\Users\acuartas\.gradle\caches\8.9\transforms\fc515fad8b7f333e0efb69cf3565ff4a\transformed\activity-1.8.0\res

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.7.3" type="partial_results">
+    <map id="UnsafeIntentLaunch">
+            <map id="unprotected">
+                <entry
+                    name="com.bitcode.webcommandapp.MainActivity"
+                    boolean="true"/>
+            </map>
+    </map>
+    <map id="UnusedResources">
+        <entry
+            name="model"
+            string="color[black(U),white(U)],id[tabLayout(U),pageContainer(D),browserPage(U),urlBar(D),urlInput(U),btnLoad(U),tvServerInfo(U),webView(U),scriptInput(U),btnExecute(U),btnClearLog(U),tvLog(U),configPage(U),tvConfigSummary(U),tvConfigResult(U),dbSoapUrlInput(U),dbBaseInput(U),dbTokenInput(U),providerClientTokenInput(U),providerPasoInput(U),serverPortInput(U),btnConfigSave(U),btnConfigReload(U),dbSqlInput(U),btnDbFindDataSoap(U),btnDbFindReaderSoap(U),btnProviderLoad(U),btnServerToggle(U),recorderPage(U),tvRecorderStatus(U),btnRecorderStart(U),btnRecorderStop(U),btnRecorderClear(U),btnRecorderApplyToEditor(U),btnRecorderRunNow(U),recorderScriptOutput(U),websocketPage(U),wsServerUrlInput(U),wsDroneIdInput(U),btnWsConnect(U),btnWsDisconnect(U),tvWsState(U),tvWsDroneInfo(U),btnWsClearLog(U),btnWsUseCurrentToken(U),tvWsLog(U),wsStatusPayloadInput(U),btnWsSendStatus(U),signalRBridgeWebView(U)],layout[activity_main(U)],string[app_name(U)],style[Theme_WebCommandApp(U),TextAppearance_AppCompat_Body2(R),Theme_MaterialComponents_DayNight_NoActionBar(R)],xml[network_security_config(U)];33^2^36,35^37^0^1;;;"/>
+    </map>
+
+</incidents>

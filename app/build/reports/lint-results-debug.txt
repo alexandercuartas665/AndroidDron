@@ -1,0 +1,493 @@
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:292: Error: Call requires API level 23 (current min is 21): android.webkit.WebResourceError#getErrorCode [NewApi]
+                    val code = error?.errorCode ?: -1
+                                      ~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:292: Error: Call requires API level 23 (current min is 21): android.webkit.WebResourceError#getErrorCode [NewApi]
+                    val code = error?.errorCode ?: -1
+                                      ~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:293: Error: Call requires API level 23 (current min is 21): android.webkit.WebResourceError#getDescription [NewApi]
+                    val desc = error?.description?.toString().orEmpty()
+                                      ~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:293: Error: Call requires API level 23 (current min is 21): android.webkit.WebResourceError#getDescription [NewApi]
+                    val desc = error?.description?.toString().orEmpty()
+                                      ~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:402: Error: Call requires API level 23 (current min is 21): android.webkit.WebResourceError#getDescription [NewApi]
+                appendWsLog("Bridge error: ${error?.description ?: "sin detalle"}")
+                                                    ~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:402: Error: Call requires API level 23 (current min is 21): android.webkit.WebResourceError#getDescription [NewApi]
+                appendWsLog("Bridge error: ${error?.description ?: "sin detalle"}")
+                                                    ~~~~~~~~~~~
+
+   Explanation for issues of type "NewApi":
+   This check scans through all the Android API calls in the application and
+   warns about any calls that are not available on all versions targeted by
+   this application (according to its minimum SDK attribute in the manifest).
+
+   If you really want to use this API and don't need to support older devices
+   just set the minSdkVersion in your build.gradle or AndroidManifest.xml
+   files.
+
+   If your code is deliberately accessing newer APIs, and you have ensured
+   (e.g. with conditional execution) that this code will only ever be called
+   on a supported platform, then you can annotate your class or method with
+   the @TargetApi annotation specifying the local minimum SDK to apply, such
+   as @TargetApi(11), such that this check considers 11 rather than your
+   manifest file's minimum SDK as the required API level.
+
+   If you are deliberately setting android: attributes in style definitions,
+   make sure you place this in a values-vNN folder in order to avoid running
+   into runtime conflicts on certain devices where manufacturers have added
+   custom attributes whose ids conflict with the new ones on later platforms.
+
+   Similarly, you can use tools:targetApi="11" in an XML file to indicate that
+   the element will only be inflated in an adequate context.
+
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\build.gradle.kts:16: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
+        targetSdk = 34
+        ~~~~~~~~~~~~~~
+
+   Explanation for issues of type "OldTargetApi":
+   When your application runs on a version of Android that is more recent than
+   your targetSdkVersion specifies that it has been tested with, various
+   compatibility modes kick in. This ensures that your application continues
+   to work, but it may look out of place. For example, if the targetSdkVersion
+   is less than 14, your app may get an option button in the UI.
+
+   To fix this issue, set the targetSdkVersion to the highest available value.
+   Then test your app to make sure everything works correctly. You may want to
+   consult the compatibility notes to see what changes apply to each version
+   you are adding support for:
+   https://developer.android.com/reference/android/os/Build.VERSION_CODES.html
+   as well as follow this guide:
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.
+   html
+
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.html
+
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\AndroidManifest.xml:13: Warning: Attribute usesCleartextTraffic is only used in API level 23 and higher (current min is 21) [UnusedAttribute]
+        android:usesCleartextTraffic="true"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\AndroidManifest.xml:14: Warning: Attribute networkSecurityConfig is only used in API level 24 and higher (current min is 21) [UnusedAttribute]
+        android:networkSecurityConfig="@xml/network_security_config">
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedAttribute":
+   This check finds attributes set in XML files that were introduced in a
+   version newer than the oldest version targeted by your application (with
+   the minSdkVersion attribute).
+
+   This is not an error; the application will simply ignore the attribute.
+   However, if the attribute is important to the appearance or functionality
+   of your application, you should consider finding an alternative way to
+   achieve the same result with only available attributes, and then you can
+   optionally create a copy of the layout in a layout-vNN folder which will be
+   used on API NN or higher where you can take advantage of the newer
+   attribute.
+
+   Note: This check does not only apply to attributes. For example, some tags
+   can be unused too, such as the new <tag> element in layouts introduced in
+   API 21.
+
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\build.gradle.kts:50: Warning: A newer version of androidx.core:core-ktx than 1.13.1 is available: 1.18.0 [GradleDependency]
+    implementation("androidx.core:core-ktx:1.13.1")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\build.gradle.kts:51: Warning: A newer version of androidx.appcompat:appcompat than 1.7.0 is available: 1.7.1 [GradleDependency]
+    implementation("androidx.appcompat:appcompat:1.7.0")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\build.gradle.kts:52: Warning: A newer version of com.google.android.material:material than 1.12.0 is available: 1.13.0 [GradleDependency]
+    implementation("com.google.android.material:material:1.12.0")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\build.gradle.kts:53: Warning: A newer version of androidx.constraintlayout:constraintlayout than 2.1.4 is available: 2.2.1 [GradleDependency]
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\build.gradle.kts:57: Warning: A newer version of androidx.test.ext:junit than 1.2.1 is available: 1.3.0 [GradleDependency]
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\build.gradle.kts:58: Warning: A newer version of androidx.test.espresso:espresso-core than 3.6.1 is available: 3.7.0 [GradleDependency]
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:411: Warning: Permitting connections with SSL-related errors could allow eavesdroppers to intercept data sent by your app, which impacts the privacy of your users. Consider canceling the connections by invoking SslErrorHandler#cancel(). [WebViewClientOnReceivedSslError]
+                handler?.proceed()
+                ~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:411: Warning: Permitting connections with SSL-related errors could allow eavesdroppers to intercept data sent by your app, which impacts the privacy of your users. Consider canceling the connections by invoking SslErrorHandler#cancel(). [WebViewClientOnReceivedSslError]
+                handler?.proceed()
+                ~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "WebViewClientOnReceivedSslError":
+   This check looks for onReceivedSslError implementations that invoke
+   SslErrorHandler#proceed.
+
+   https://goo.gle/WebViewClientOnReceivedSslError
+
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:345: Warning: Unnecessary; SDK_INT is always >= 21 [ObsoleteSdkInt]
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\values\themes.xml:7: Warning: Unnecessary; SDK_INT is always >= 21 [ObsoleteSdkInt]
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+                                            ~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\AndroidManifest.xml:8: Warning: Should explicitly set android:icon, there is no default [MissingApplicationIcon]
+    <application
+     ~~~~~~~~~~~
+
+   Explanation for issues of type "MissingApplicationIcon":
+   You should set an icon for the application as whole because there is no
+   default. This attribute must be set as a reference to a drawable resource
+   containing the image (for example @drawable/icon).
+
+   https://developer.android.com/studio/publish/preparing#publishing-configure
+
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:109: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                <Button
+                 ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:116: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                <Button
+                 ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:221: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:228: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:253: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:260: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:275: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:282: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:324: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:331: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:346: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:353: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:424: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:431: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:463: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:470: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+
+   Explanation for issues of type "ButtonStyle":
+   Button bars typically use a borderless style for the buttons. Set the
+   style="?android:attr/buttonBarButtonStyle" attribute on each of the
+   buttons, and set style="?android:attr/buttonBarStyle" on the parent layout
+
+   https://d.android.com/r/studio-ui/designer/material/dialogs
+
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:60: Warning: Missing autofillHints attribute [Autofill]
+                <EditText
+                 ~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:93: Warning: Missing autofillHints attribute [Autofill]
+            <EditText
+             ~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:166: Warning: Missing autofillHints attribute [Autofill]
+                <EditText
+                 ~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:175: Warning: Missing autofillHints attribute [Autofill]
+                <EditText
+                 ~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:183: Warning: Missing autofillHints attribute [Autofill]
+                <EditText
+                 ~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:191: Warning: Missing autofillHints attribute [Autofill]
+                <EditText
+                 ~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:199: Warning: Missing autofillHints attribute [Autofill]
+                <EditText
+                 ~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:207: Warning: Missing autofillHints attribute [Autofill]
+                <EditText
+                 ~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:237: Warning: Missing autofillHints attribute [Autofill]
+                <EditText
+                 ~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:369: Warning: Missing autofillHints attribute [Autofill]
+                <EditText
+                 ~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:399: Warning: Missing autofillHints attribute [Autofill]
+                <EditText
+                 ~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:409: Warning: Missing autofillHints attribute [Autofill]
+                <EditText
+                 ~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:492: Warning: Missing autofillHints attribute [Autofill]
+                <EditText
+                 ~~~~~~~~
+
+   Explanation for issues of type "Autofill":
+   Specify an autofillHints attribute when targeting SDK version 26 or higher
+   or explicitly specify that the view is not important for autofill. Your app
+   can help an autofill service classify the data correctly by providing the
+   meaning of each view that could be autofillable, such as views representing
+   usernames, passwords, credit card fields, email addresses, etc.
+
+   The hints can have any value, but it is recommended to use predefined
+   values like 'username' for a username or 'creditCardNumber' for a credit
+   card number. For a list of all predefined autofill hint constants, see the
+   AUTOFILL_HINT_ constants in the View reference at
+   https://developer.android.com/reference/android/view/View.html.
+
+   You can mark a view unimportant for autofill by specifying an
+   importantForAutofill attribute on that view or a parent view. See
+   https://developer.android.com/reference/android/view/View.html#setImportant
+   ForAutofill(int).
+
+   https://developer.android.com/guide/topics/text/autofill.html
+
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:811: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            tvServerInfo.text = "Servidor: http://$ip:$port  | API key requerida"
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:811: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            tvServerInfo.text = "Servidor: http://$ip:$port  | API key requerida"
+                                 ~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:811: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            tvServerInfo.text = "Servidor: http://$ip:$port  | API key requerida"
+                                                           ~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:812: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            btnServerToggle.text = "Detener servidor"
+                                    ~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:820: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            tvServerInfo.text = "Servidor: error al iniciar"
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:821: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            btnServerToggle.text = "Iniciar servidor"
+                                    ~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:832: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        tvServerInfo.text = "Servidor: detenido"
+                             ~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:833: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        btnServerToggle.text = "Iniciar servidor"
+                                ~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:1163: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            wsStatusPayloadInput.setText("""{"respuesta":"ok","instruccion":"$instruction"}""")
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:1163: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            wsStatusPayloadInput.setText("""{"respuesta":"ok","instruccion":"$instruction"}""")
+                                              ~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:1163: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            wsStatusPayloadInput.setText("""{"respuesta":"ok","instruccion":"$instruction"}""")
+                                                          ~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:1163: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            wsStatusPayloadInput.setText("""{"respuesta":"ok","instruccion":"$instruction"}""")
+                                                               ~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:1395: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+        tvWsState.text = "Estado: $normalized"
+                         ~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:1395: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        tvWsState.text = "Estado: $normalized"
+                          ~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:1403: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            tvWsDroneInfo.text = "ID: (no registrado)"
+                                  ~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:1596: Warning: Number formatting does not take into account locale settings. Consider using String.format instead. [SetTextI18n]
+                serverPortInput.setText(portFromReference.toString())
+                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:2073: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                tvWsDroneInfo.text = "ID: $droneId ($shortId)"
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\java\com\bitcode\webcommandapp\MainActivity.kt:2073: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                tvWsDroneInfo.text = "ID: $droneId ($shortId)"
+                                      ~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:20: Warning: Hardcoded string "Navegador", should use @string resource [HardcodedText]
+            android:text="Navegador" />
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:25: Warning: Hardcoded string "Configuracion", should use @string resource [HardcodedText]
+            android:text="Configuracion" />
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:30: Warning: Hardcoded string "Grabador", should use @string resource [HardcodedText]
+            android:text="Grabador" />
+            ~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:35: Warning: Hardcoded string "WebSocket", should use @string resource [HardcodedText]
+            android:text="WebSocket" />
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:65: Warning: Hardcoded string "https://example.com", should use @string resource [HardcodedText]
+                    android:hint="https://example.com"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:75: Warning: Hardcoded string "Ir", should use @string resource [HardcodedText]
+                    android:text="Ir" />
+                    ~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:83: Warning: Hardcoded string "Servidor: iniciando...", should use @string resource [HardcodedText]
+                android:text="Servidor: iniciando..."
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:99: Warning: Hardcoded string "document.title", should use @string resource [HardcodedText]
+                android:hint="document.title"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:114: Warning: Hardcoded string "Ejecutar JS", should use @string resource [HardcodedText]
+                    android:text="Ejecutar JS" />
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:122: Warning: Hardcoded string "Limpiar log", should use @string resource [HardcodedText]
+                    android:text="Limpiar log" />
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:155: Warning: Hardcoded string "Configuracion actual", should use @string resource [HardcodedText]
+                    android:text="Configuracion actual"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:163: Warning: Hardcoded string "Sin ejecuciones", should use @string resource [HardcodedText]
+                    android:text="Sin ejecuciones"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:171: Warning: Hardcoded string "https://app.bitcode.com.co/datos/WebDatos.asmx", should use @string resource [HardcodedText]
+                    android:hint="https://app.bitcode.com.co/datos/WebDatos.asmx"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:179: Warning: Hardcoded string "Base (ej: AZURE_VPS)", should use @string resource [HardcodedText]
+                    android:hint="Base (ej: AZURE_VPS)"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:187: Warning: Hardcoded string "Token SOAP", should use @string resource [HardcodedText]
+                    android:hint="Token SOAP"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:195: Warning: Hardcoded string "Token cliente (WEB_SCRAPING_CLI.TOKEN)", should use @string resource [HardcodedText]
+                    android:hint="Token cliente (WEB_SCRAPING_CLI.TOKEN)"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:203: Warning: Hardcoded string "Paso (ORDEN) ej: 1", should use @string resource [HardcodedText]
+                    android:hint="Paso (ORDEN) ej: 1"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:211: Warning: Hardcoded string "Puerto escucha (REFERENCIA) ej: 32123", should use @string resource [HardcodedText]
+                    android:hint="Puerto escucha (REFERENCIA) ej: 32123"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:226: Warning: Hardcoded string "Guardar config", should use @string resource [HardcodedText]
+                        android:text="Guardar config" />
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:234: Warning: Hardcoded string "Recargar config", should use @string resource [HardcodedText]
+                        android:text="Recargar config" />
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:243: Warning: Hardcoded string "SELECT TOP 1 * FROM [dbx.GENE].dbo.WEB_SCRAPING_CLI", should use @string resource [HardcodedText]
+                    android:hint="SELECT TOP 1 * FROM [dbx.GENE].dbo.WEB_SCRAPING_CLI"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:258: Warning: Hardcoded string "FindDataSOAP", should use @string resource [HardcodedText]
+                        android:text="FindDataSOAP" />
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:266: Warning: Hardcoded string "FindReaderSOAP", should use @string resource [HardcodedText]
+                        android:text="FindReaderSOAP" />
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:280: Warning: Hardcoded string "Cargar token", should use @string resource [HardcodedText]
+                        android:text="Cargar token" />
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:288: Warning: Hardcoded string "Iniciar servidor", should use @string resource [HardcodedText]
+                        android:text="Iniciar servidor" />
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:309: Warning: Hardcoded string "Grabador: detenido", should use @string resource [HardcodedText]
+                    android:text="Grabador: detenido"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:316: Warning: Hardcoded string "Flujo: inicia grabacion, interactua en la pestana Navegador y deten para generar script.", should use @string resource [HardcodedText]
+                    android:text="Flujo: inicia grabacion, interactua en la pestana Navegador y deten para generar script." />
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:329: Warning: Hardcoded string "Iniciar", should use @string resource [HardcodedText]
+                        android:text="Iniciar" />
+                        ~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:337: Warning: Hardcoded string "Detener", should use @string resource [HardcodedText]
+                        android:text="Detener" />
+                        ~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:351: Warning: Hardcoded string "Limpiar", should use @string resource [HardcodedText]
+                        android:text="Limpiar" />
+                        ~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:359: Warning: Hardcoded string "Pasar a Script", should use @string resource [HardcodedText]
+                        android:text="Pasar a Script" />
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:367: Warning: Hardcoded string "Probar script grabado", should use @string resource [HardcodedText]
+                    android:text="Probar script grabado" />
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:375: Warning: Hardcoded string "Aqui se genera el script android_touch_v1", should use @string resource [HardcodedText]
+                    android:hint="Aqui se genera el script android_touch_v1"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:396: Warning: Hardcoded string "Cliente Drone - Conexion en Tiempo Real", should use @string resource [HardcodedText]
+                    android:text="Cliente Drone - Conexion en Tiempo Real"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:404: Warning: Hardcoded string "Servidor", should use @string resource [HardcodedText]
+                    android:hint="Servidor"
+                    ~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:407: Warning: Hardcoded string "https://test1.bitcode.com.co", should use @string resource [HardcodedText]
+                    android:text="https://test1.bitcode.com.co" />
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:413: Warning: Hardcoded string "Drone ID", should use @string resource [HardcodedText]
+                    android:hint="Drone ID"
+                    ~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:416: Warning: Hardcoded string "12345", should use @string resource [HardcodedText]
+                    android:text="12345" />
+                    ~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:429: Warning: Hardcoded string "Conectar", should use @string resource [HardcodedText]
+                        android:text="Conectar" />
+                        ~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:438: Warning: Hardcoded string "Desconectar", should use @string resource [HardcodedText]
+                        android:text="Desconectar" />
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:446: Warning: Hardcoded string "Estado: Desconectado", should use @string resource [HardcodedText]
+                    android:text="Estado: Desconectado"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:454: Warning: Hardcoded string "ID: (no registrado)", should use @string resource [HardcodedText]
+                    android:text="ID: (no registrado)"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:468: Warning: Hardcoded string "Limpiar log", should use @string resource [HardcodedText]
+                        android:text="Limpiar log" />
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:476: Warning: Hardcoded string "Usar token actual", should use @string resource [HardcodedText]
+                        android:text="Usar token actual" />
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:498: Warning: Hardcoded string "{"respuesta":"ok"}", should use @string resource [HardcodedText]
+                    android:hint="{&quot;respuesta&quot;:&quot;ok&quot;}"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DesarrolloIA\Navegador android Dron\webcommandapp\app\src\main\res\layout\activity_main.xml:508: Warning: Hardcoded string "Enviar estado", should use @string resource [HardcodedText]
+                    android:text="Enviar estado" />
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "HardcodedText":
+   Hardcoding text attributes directly in layout files is bad for several
+   reasons:
+
+   * When creating configuration variations (for example for landscape or
+   portrait) you have to repeat the actual text (and keep it up to date when
+   making changes)
+
+   * The application cannot be translated to other languages by just adding
+   new translations for existing string resources.
+
+   There are quickfixes to automatically extract this hardcoded string into a
+   resource lookup.
+
+6 errors, 107 warnings
