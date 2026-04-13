@@ -230,35 +230,43 @@ class MainActivity : AppCompatActivity() {
         settings.allowContentAccess = true
         settings.cacheMode = WebSettings.LOAD_DEFAULT
         settings.loadsImagesAutomatically = true
+        
+        // 🔧 Cambiar UserAgent para que Google Maps no intente redirigir a app nativa
+        // Usar un User Agent que simule un navegador de escritorio de Google
+        settings.userAgentString = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        
         webView.addJavascriptInterface(TouchRecorderBridge(), "AndroidTouchRecorder")
 
         webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 val rawUrl = request?.url?.toString().orEmpty()
+                Log.d("WebViewIntent", "shouldOverrideUrlLoading: $rawUrl")
                 if (rawUrl.isBlank()) return false
 
-                Log.d("WebViewIntent", "shouldOverrideUrlLoading: $rawUrl")
-
+                // 🔧 CRÍTICO: Detectar y manejar intent:// URLs antes de que causen errores
                 if (rawUrl.startsWith("intent://", ignoreCase = true)) {
-                    Log.d("WebViewIntent", "Intent URL detectado")
+                    Log.d("WebViewIntent", "Intent URL detectado en shouldOverrideUrlLoading")
                     val fallback = extractIntentFallbackUrl(rawUrl)
-                    Log.d("WebViewIntent", "Fallback URL extraída: $fallback")
-                    if (fallback.isNotBlank()) {
-                        appendLog("Intent detectado, usando fallback: $fallback")
+                    Log.d("WebViewIntent", "Fallback extraído: $fallback")
+                    
+                    if (fallback.isNotBlank() && fallback.startsWith("http")) {
+                        appendLog("Intent→Fallback: ${fallback.take(50)}...")
                         mainHandler.post { 
-                            Log.d("WebViewIntent", "Cargando fallback URL")
+                            Log.d("WebViewIntent", "Cargando fallback URL: $fallback")
                             webView.loadUrl(fallback) 
                         }
                     } else {
-                        appendLog("Intent sin fallback bloqueado: $rawUrl")
+                        appendLog("Intent bloqueado (sin fallback válido)")
                     }
+                    // ⚠️ IMPORTANTE: Retornar true para prevenir que el WebView intente cargar el intent://
                     return true
                 }
 
                 if (!rawUrl.startsWith("http://", ignoreCase = true) &&
                     !rawUrl.startsWith("https://", ignoreCase = true)
                 ) {
-                    appendLog("Esquema no soportado bloqueado: $rawUrl")
+                    Log.d("WebViewIntent", "Esquema no soportado: $rawUrl")
+                    appendLog("Esquema bloqueado: $rawUrl")
                     return true
                 }
 
@@ -278,6 +286,9 @@ class MainActivity : AppCompatActivity() {
                 Log.i("WebCommandApp", "WebView onPageFinished url=$finalUrl")
                 appendLog("Navegacion OK: $finalUrl")
                 pendingNavigationLatch?.countDown()
+                
+                // Inyectar script para manejar intent:// URLs (especialmente desde Google Maps)
+                injectIntentInterceptorScript()
             }
 
             override fun onReceivedError(
@@ -288,19 +299,32 @@ class MainActivity : AppCompatActivity() {
                 super.onReceivedError(view, request, error)
                 if (request?.isForMainFrame == true) {
                     val failedUrl = request.url?.toString().orEmpty()
-                    if (failedUrl.startsWith("intent://", ignoreCase = true)) {
-                        val fallback = extractIntentFallbackUrl(failedUrl)
-                        if (fallback.isNotBlank()) {
-                            appendLog("Intent con fallback detectado, reintentando web")
-                            mainHandler.post { webView.loadUrl(fallback) }
-                            return
-                        }
-                    }
                     val code = error?.errorCode ?: -1
                     val desc = error?.description?.toString().orEmpty()
+                    
+                    Log.e("WebViewIntent", "onReceivedError: code=$code desc=$desc url=$failedUrl")
+                    
+                    // 🔧 CRÍTICO: Detectar intent:// URLs incluso desde errorStream
+                    if (failedUrl.startsWith("intent://", ignoreCase = true)) {
+                        Log.e("WebViewIntent", "Intent URL en error, extrayendo fallback")
+                        val fallback = extractIntentFallbackUrl(failedUrl)
+                        Log.e("WebViewIntent", "Fallback: $fallback")
+                        
+                        if (fallback.isNotBlank() && fallback.startsWith("http")) {
+                            appendLog("Error Intent→Fallback: $fallback")
+                            mainHandler.post { 
+                                Log.d("WebViewIntent", "Cargando fallback tras error")
+                                webView.loadUrl(fallback) 
+                            }
+                            return  // ⚠️ NO continuar con el error handling normal
+                        } else {
+                            appendLog("Intent+Error sin fallback válido")
+                        }
+                    }
+                    
                     pendingNavigationError = "code=$code desc=$desc"
-                    Log.e("WebCommandApp", "WebView main frame error code=$code desc=$desc url=$failedUrl")
-                    appendLog("Error de carga: $desc ($code) url=$failedUrl")
+                    Log.e("WebCommandApp", "WebView error code=$code desc=$desc url=$failedUrl")
+                    appendLog("Error: $desc ($code)")
                     pendingNavigationLatch?.countDown()
                 }
             }
@@ -468,6 +492,57 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Log.e("WebViewIntent", "Error extrayendo fallback: ${e.message}", e)
             return ""
+        }
+    }
+
+    private fun injectIntentInterceptorScript() {
+        val script = """
+            (function() {
+                // Interceptar todos los clicks en la página
+                document.addEventListener('click', function(e) {
+                    var target = e.target;
+                    // Si es un link o está dentro de un link
+                    while (target && target.tagName !== 'A' && target !== document) {
+                        target = target.parentElement;
+                    }
+                    
+                    if (target && target.tagName === 'A' && target.href) {
+                        var href = target.href;
+                        // Si es un intent:// URL, prevenir default y navegar al fallback
+                        if (href.indexOf('intent://') === 0) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            console.log('Intent URL interceptado: ' + href.substring(0, 100));
+                            
+                            // Enviar a la app para que maneje la extracción del fallback
+                            window.location.href = href;
+                            return false;
+                        }
+                    }
+                }, true);
+                
+                // También interceptar window.location.href changes
+                var originalSetProperty = Object.getOwnPropertyDescriptor(Window.prototype, 'location').set;
+                Object.defineProperty(Window.prototype, 'location', {
+                    get: function() { return originalSetProperty; },
+                    set: function(value) {
+                        if (typeof value === 'string' && value.indexOf('intent://') === 0) {
+                            console.log('Intent URL via location.href: ' + value.substring(0, 100));
+                            window.location.href = value;
+                            return;
+                        }
+                        originalSetProperty.call(this, value);
+                    }
+                });
+                
+                console.log('Intent interceptor inyectado');
+            })();
+        """.trimIndent()
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            webView.evaluateJavascript(script) { value ->
+                Log.d("IntentInjector", "Script inyectado: $value")
+            }
         }
     }
 
